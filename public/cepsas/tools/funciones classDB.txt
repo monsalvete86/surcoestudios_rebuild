@@ -1,0 +1,31 @@
+//Create Table
+$query="CREATE TABLE posts (id int AUTO_INCREMENT PRIMARY KEY,title varchar(255),post text);";
+$db->execute($query);
+
+
+//insert query
+$table="posts";
+$data=array();
+$data['title']="First Test Post";
+$data['post']="This is content of first post. Testing testing";
+$db->insert($table,$data);
+
+//Select record
+$query="SELECT * FROM ".$table;
+$result=$db->execute($query);
+while($current=mysql_fetch_assoc($result)){
+echo $current['title'].'<br/>';
+echo $current['post'].'<br/>';
+}
+
+//Update Record
+$table="posts";
+$data=array();
+$data['title']="Testing post";
+$data['post']="This is content of first post. Testing testing22222";
+$where="id=1";
+$db->update($table,$data,$where);
+
+//Delete Record
+$where="id=1";
+$db->delete($table,$where);

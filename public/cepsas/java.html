@@ -1,0 +1,104 @@
+<h2>conexiondb.java</h2>
+<pre>
+package controlador;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author SENA
+ */
+public class ClsConexion {
+
+    private static String user = "alex";
+    private static String password = "123";
+    private static String database = "jdbc:mysql://localhost:3306/colegio";
+
+    public static Connection conectar() {
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection(database, user, password);
+            System.out.println("conectado");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return con;
+    }
+
+    public static void Cerrar(Connection con) {
+        try {
+            if (con != null) {
+                con.close();
+            }
+            con = null;
+        } catch (Exception e) {
+        }
+    }
+    
+}
+<p>
+<h2>FORMULARIO</h2>
+AGREGAR 
+
+
+import Modelo.ClsColegio;
+import controlador.ClsConexion;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
+DESPUES DEL  initComponents();
+ 
+
+    public void metodoGuardar() {
+        Connection con = ClsConexion.conectar();
+        try {
+            String nombre = txtNombre.getText();
+            String notas = txtNotas.getText();
+            if(nombre.isEmpty() || notas.isEmpty()){
+                JOptionPane.showMessageDialog(null, "CAMPOS VACÍOS");
+            }else{
+                
+                int n = Integer.parseInt(notas);
+                clsColegio.guardarColegio(nombre, n, con);
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió algo.");
+        }finally{
+            ClsConexion.Cerrar(con);
+        }
+    }
+
+despues sigue otra vez ...
+ @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+<H2>MODELO QUE GUARDA LOS DATOS DEL FORMULARIO </H2>
+
+AGREGAR 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
+public class ClsColegio {
+    
+    public PreparedStatement sql;
+    
+    public void guardarColegio(String nombre, int notas, Connection con){
+        try {
+            sql = con.prepareStatement("INSERT INTO alumnos(nombre, notas) VALUES('"+nombre+"', '"+notas+"')");
+            sql.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Alumno guardado");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar" + e.getMessage());
+        }
+    }
+    
+}
+</pre>

@@ -4,6 +4,7 @@
 /storage/*.key
 /storage/framework/cache/data
 /vendor
+/node_modules
 
 /.idea
 /.vscode

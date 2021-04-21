@@ -74,7 +74,7 @@ switch($mes)
 $nuevafecha = $dia." de ".$mes." de ".$año;
 
 				
-$datos_accionista=datosaccionista($datos_venta['id_accionista']);*/
+$datos_accionista=datosaccionista($datos_venta['id_accionista']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -108,8 +108,9 @@ $datos_accionista=datosaccionista($datos_venta['id_accionista']);*/
 		border:1px solid #000;
 		border
 	}
+
 	.lineainferior{
-	border-bottom:1px solid #000;
+		border-bottom: 1px solid #000;
 	}
 </style>
 </head>

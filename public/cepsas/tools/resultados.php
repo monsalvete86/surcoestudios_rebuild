@@ -33,8 +33,7 @@ $votaciones = votaciones($asamblea);
 	<div class="row">
 		 <?php 
 			if($votaciones==false)
-			{
-			?>
+			{ ?>
 				<div class="col-md-12">
 					<div class="box box-widget widget-user-2">
 						<div class="widget-user-header bg-yellow">
@@ -46,11 +45,8 @@ $votaciones = votaciones($asamblea);
 						</div>
 					</div>
 				</div>			
-			<?php							
-				else
-				{
-					while($datos= mysql_fetch_array($votaciones))
-					{	
+<?php	}	else {
+					while($datos= mysql_fetch_array($votaciones)) {	
 						/*$si = round(($datos['si'] * 100) / $datos['votantes']);
 						$no = round(($datos['no'] * 100) / $datos['votantes']);*/
 					?>
@@ -68,7 +64,7 @@ $votaciones = votaciones($asamblea);
 											else
 												while($datos2= mysql_fetch_array($respuestas))
 												{
-													echo '<li>'.item($datos2['valor_respuesta'])'.<span class="pull-right badge bg-blue">'.$datos2['suma'].'</span></li>';
+													echo '<li>'.item($datos2['valor_respuesta']).'<span class="pull-right badge bg-blue">'.$datos2['suma'].'</span></li>';
 												}	
 										?>
 									</ul>

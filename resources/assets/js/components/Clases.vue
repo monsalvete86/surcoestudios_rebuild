@@ -41,11 +41,9 @@
                                     <td v-if="inscripcion.estado==2">En progreso</td>
                                     <td v-if="inscripcion.estado==3">Finalizado</td>
                                     <td v-if="inscripcion.estado==0">Cancelado</td>
-                                     <td v-if="inscripcion.estado==2">
-                                        <button class="btn btn-success" @click="irCurso(inscripcion)">Ir al curso</button>
-                                    </td>
-                                    <td v-else>
-                                        <button class="btn btn-secondary">Ir al curso</button>
+                                    <td>
+                                        <button  v-if="inscripcion.estado==2 || inscripcion.estado==3" class="btn btn-success" @click="irCurso(inscripcion)">Ir al curso</button>
+                                        <button v-else class="btn btn-secondary">Ir al curso</button>
                                     </td>
                                     <td >
                                         <a target="_blank" v-if="inscripcion.fec_termina" class="btn btn-info" :href="aux_ruta + 'cepsas/newdiploma.php?id=' + inscripcion.id_alumno + '&curso=' + inscripcion.id+ '&inscripcion=' + inscripcion.id_curso">Certificado Curso</a>                                        
@@ -280,12 +278,11 @@
                 
             },
             irCurso(curso) {
-                this.curso = curso;
-                this.id_curso = curso.id_curso;
-                this.id_inscripcion = curso.id;
-                this.getModulos(curso.id_curso);
-                this.getResultModule(curso.id_curso);
-
+							this.curso = curso;
+							this.id_curso = curso.id_curso;
+							this.id_inscripcion = curso.id;
+							this.getModulos(curso.id_curso);
+							this.getResultModule(curso.id_curso);
             },
             getModulos(id_curso) {
 

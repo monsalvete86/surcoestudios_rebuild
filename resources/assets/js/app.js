@@ -112,7 +112,8 @@ const app = new Vue({
     data: {
 
         search: '',
-        ruta: '/new_surcoestudios/laravStart/public/'
+        ruta: ''
+            //ruta: '/new_surcoestudios/laravStart/public/'
 
     },
     methods: {

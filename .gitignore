@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /storage/framework/cache/data
+vendor
+node_modules
 /vendor
 /node_modules
 
